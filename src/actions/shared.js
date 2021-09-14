@@ -3,12 +3,18 @@ import { setAuthedUser } from "./authedUser";
 import { receiveQuestions } from "./questions";
 import { receiveUser } from "./user";
 
-export function handleInitialUserData(id) {
-  return async (dispatch) => {
-    const users = getUsers();
-    const questions = getQuestions();
-    dispatch(setAuthedUser(id));
-    dispatch(receiveUser(users));
-    dispatch(receiveQuestions(questions));
+export default function handleInitialUserData(id) {
+  return (dispatch) => {
+    (async function () {
+      const users = await getUsers();
+      const questions = await getQuestions();
+      /**
+       * TODO : I need to learn how to batch multiple dispatch
+       * calls to avoid multiple rerenders.
+       */
+      dispatch(receiveQuestions(questions));
+      dispatch(receiveUser(users[id]));
+      dispatch(setAuthedUser(id));
+    })();
   };
 }

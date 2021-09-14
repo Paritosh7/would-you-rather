@@ -1,7 +1,8 @@
 import React from "react";
-import { handleInitialUserData } from "../actions/shared";
+import { connect } from "react-redux";
+import handleInitialUserData from "../actions/shared";
 
-function Login() {
+function Login({ dispatch }) {
   /**
    * Didn't want to make Login a controlled component,
    * so used useRef.
@@ -11,7 +12,7 @@ function Login() {
   function handleSubmit(eve) {
     eve.preventDefault();
     const userID = userRef.current.value;
-    handleInitialUserData(userID);
+    dispatch(handleInitialUserData(userID));
   }
   return (
     <form onSubmit={handleSubmit}>
@@ -28,4 +29,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default connect()(Login);
