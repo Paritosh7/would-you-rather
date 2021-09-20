@@ -2,17 +2,20 @@ import React from "react";
 import { connect } from "react-redux";
 import handleInitialUserData from "../actions/shared";
 
-function Login({ dispatch }) {
+function Login(props) {
   /**
    * Didn't want to make Login a controlled component,
    * so used useRef.
    */
+  const { dispatch } = props;
+  console.log(props);
   const userRef = React.useRef();
 
   function handleSubmit(eve) {
     eve.preventDefault();
     const userID = userRef.current.value;
     dispatch(handleInitialUserData(userID));
+    props.history.push("/");
   }
   return (
     <form onSubmit={handleSubmit}>

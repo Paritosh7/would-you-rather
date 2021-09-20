@@ -1,9 +1,9 @@
-import { RECEIVE_USER } from "../actions/user";
+import { RECEIVE_USERS } from "../actions/users";
 
-export default function user(state = {}, action) {
+export default function users(state = {}, action) {
   switch (action.type) {
-    case RECEIVE_USER:
-      return action.user;
+    case RECEIVE_USERS:
+      return action.users;
 
     default:
       return state;

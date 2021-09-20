@@ -11,7 +11,7 @@ export default function Nav() {
       <ul>
         <li>Home</li>
         <li>Leaderboard</li>
-        <li>Add Question</li>
+        <li>Add question</li>
       </ul>
       <div>
         <label></label>

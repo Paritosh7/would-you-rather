@@ -1,7 +1,7 @@
 import { _getQuestions as getQuestions, _getUsers as getUsers } from "../_DATA";
 import { setAuthedUser } from "./authedUser";
 import { receiveQuestions } from "./questions";
-import { receiveUser } from "./user";
+import { receiveUsers } from "./users";
 
 export default function handleInitialUserData(id) {
   return (dispatch) => {
@@ -13,7 +13,7 @@ export default function handleInitialUserData(id) {
        * calls to avoid multiple rerenders.
        */
       dispatch(receiveQuestions(questions));
-      dispatch(receiveUser(users[id]));
+      dispatch(receiveUsers(users));
       dispatch(setAuthedUser(id));
     })();
   };
