@@ -1,7 +1,8 @@
 import { _getQuestions as getQuestions, _getUsers as getUsers } from "../_DATA";
+import { _saveQuestion as saveQuestion } from "../_DATA";
 import { setAuthedUser } from "./authedUser";
-import { receiveQuestions } from "./questions";
-import { receiveUsers } from "./users";
+import { addQuestion, receiveQuestions } from "./questions";
+import { addQuestionToAuthedUser, receiveUsers } from "./users";
 
 export default function handleInitialUserData(id) {
   return (dispatch) => {
@@ -18,3 +19,13 @@ export default function handleInitialUserData(id) {
     })();
   };
 }
+
+export const handleAddQuestion = (question) => (dispatch) => {
+  (async function () {
+    const formattedQuestion = await saveQuestion(question);
+
+    dispatch(addQuestion(formattedQuestion));
+    const { id, author } = formattedQuestion;
+    dispatch(addQuestionToAuthedUser(id, author));
+  })();
+};

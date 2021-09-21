@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-export default function Nav() {
+export default function Nav({ authedUser }) {
   function handleLogOut() {}
   return (
     <nav
@@ -9,9 +9,15 @@ export default function Nav() {
       style={{ display: "flex", justifyContent: "space-between" }}
     >
       <ul>
-        <li>Home</li>
-        <li>Leaderboard</li>
-        <li>Add question</li>
+        <li>
+          <NavLink to="/">Home</NavLink>
+        </li>
+        <li>
+          <NavLink to="/leaderboard">Leaderboard</NavLink>
+        </li>
+        <li>
+          <NavLink to={{ pathname: "/add" }}>Add Question</NavLink>
+        </li>
       </ul>
       <div>
         <label></label>

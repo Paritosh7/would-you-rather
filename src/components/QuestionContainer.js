@@ -8,6 +8,9 @@ function QuestionsContainer({
   unAnsweredQuestionIds,
   answeredQuestionIds,
 }) {
+  console.log(unAnsweredQuestionIds);
+  console.log(answeredQuestionIds);
+
   function questionsList(questionIds) {
     return questionIds.map((id) => {
       return (
@@ -17,6 +20,7 @@ function QuestionsContainer({
       );
     });
   }
+
   return (
     <ul>
       {unanswered
@@ -33,6 +37,7 @@ const mapStateToProps = ({ authedUser, users, questions }) => {
       questions
     ),
     answeredQuestionIds: Object.keys(users[authedUser].answers),
+    questions,
   };
 };
 

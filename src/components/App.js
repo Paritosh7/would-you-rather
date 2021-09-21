@@ -4,14 +4,39 @@ import Login from "./Login";
 import Dashboard from "./Dashboard";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import PrivateRoute from "./PrivateRoute";
+import AddQuestion from "./AddQuestion";
+import LeaderBoard from "./Leaderboard";
+import Nav from "./Nav";
+import ToggleQuestionAnswerPoll from "./ToggleQuestionAnswerPoll";
 
 function App({ authedUser }) {
-  console.log("In App, authedUser : ", authedUser);
   return (
     <Router>
+      <Nav authedUser={authedUser}></Nav>
       <Switch>
-        <Route exact path="/login" component={Login}></Route>
-        <PrivateRoute authedUser={authedUser} exact component={Dashboard} />
+        <PrivateRoute
+          path="/"
+          authedUser={authedUser}
+          exact
+          component={Dashboard}
+        />
+        <Route path="/login" component={Login}></Route>
+        <PrivateRoute
+          path="/leaderboard"
+          authedUser={authedUser}
+          component={LeaderBoard}
+        />
+        <PrivateRoute
+          path="/add"
+          authedUser={authedUser}
+          component={AddQuestion}
+        />
+
+        <PrivateRoute
+          path="/question/:id"
+          authedUser={authedUser}
+          component={ToggleQuestionAnswerPoll}
+        />
       </Switch>
     </Router>
   );

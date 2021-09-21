@@ -1,5 +1,7 @@
 import React from "react";
 
-function QuestionResult() {
+function QuestionPoll() {
   return <div>Question Result</div>;
 }
+
+export default QuestionPoll;

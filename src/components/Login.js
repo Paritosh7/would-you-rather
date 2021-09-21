@@ -1,22 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import handleInitialUserData from "../actions/shared";
 
-function Login(props) {
+function Login({ authedUser, dispatch, history, location }) {
+  console.log("Login : ", authedUser);
   /**
    * Didn't want to make Login a controlled component,
    * so used useRef.
    */
-  const { dispatch } = props;
-  console.log(props);
   const userRef = React.useRef();
 
   function handleSubmit(eve) {
     eve.preventDefault();
     const userID = userRef.current.value;
     dispatch(handleInitialUserData(userID));
-    props.history.push("/");
   }
+
+  useEffect(() => {
+    if (authedUser) {
+      const { from } = location.state || { from: "/" };
+      history.push(from);
+    }
+  }, [authedUser, history]);
+
   return (
     <form onSubmit={handleSubmit}>
       <label>
@@ -32,4 +38,8 @@ function Login(props) {
   );
 }
 
-export default connect()(Login);
+const mapStateToProps = ({ authedUser }) => ({
+  authedUser,
+});
+
+export default connect(mapStateToProps)(Login);
