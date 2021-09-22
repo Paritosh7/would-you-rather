@@ -12,14 +12,12 @@ function ToggleQuestionAnswerPoll({ location }) {
           authedUser={authedUser}
           question={question}
           questions={questions}
-          users={users}
           id={id}
         />
       ) : (
         <QuestionPoll
           authedUser={authedUser}
           question={question}
-          questions={questions}
           users={users}
           id={id}
         />

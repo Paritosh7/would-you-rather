@@ -37,9 +37,11 @@ export const handleAddQuestion = (question) => (dispatch) => {
   })();
 };
 
-export const handleSaveQuestionAnswer = (answerObj) => (dispatch) => {
-  saveQuestionAnswerAPI(answerObj).then(() => {
-    dispatch(saveQuestionAnswer(answerObj));
-    dispatch(saveQuestionAnswerToAuthedUser(answerObj));
-  });
-};
+export const handleSaveQuestionAnswer =
+  (answerObj, notifyUnAnswered) => (dispatch) => {
+    saveQuestionAnswerAPI(answerObj).then(() => {
+      dispatch(saveQuestionAnswer(answerObj));
+      dispatch(saveQuestionAnswerToAuthedUser(answerObj));
+      notifyUnAnswered();
+    });
+  };

@@ -9,10 +9,10 @@ import LeaderBoard from "./Leaderboard";
 import Nav from "./Nav";
 import ToggleQuestionAnswerPoll from "./ToggleQuestionAnswerPoll";
 
-function App({ authedUser }) {
+function App({ authedUser, userName }) {
   return (
     <Router>
-      <Nav authedUser={authedUser}></Nav>
+      <Nav authedUser={authedUser} userName={userName}></Nav>
       <Switch>
         <PrivateRoute
           path="/"
@@ -42,9 +42,10 @@ function App({ authedUser }) {
   );
 }
 
-const mapStateToProps = ({ authedUser }) => {
+const mapStateToProps = ({ authedUser, users }) => {
   return {
     authedUser,
+    userName: authedUser && users[authedUser].name,
   };
 };
 

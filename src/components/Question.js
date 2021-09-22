@@ -25,7 +25,6 @@ function Question({ authedUser, unanswered, id, users, questions, match }) {
               authedUser,
               id,
               questions,
-              users,
             },
           }}
         >

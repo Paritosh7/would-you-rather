@@ -1,6 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { handleSaveQuestionAnswer } from "../actions/shared";
+import QuestionPoll from "./QuestionPoll";
 
 /**
  * TODO
@@ -21,7 +23,7 @@ function QuestionUnanswered({
     value: null,
   }));
 
-  const [submitAnswer, setSubmitAnser] = React.useState(() => false);
+  const [submitAnswer, setSubmitAnswer] = React.useState(() => false);
 
   function handleChange(eve) {
     if (state.selected === "none") {
@@ -33,13 +35,26 @@ function QuestionUnanswered({
     eve.preventDefault();
     if (state.selected === null || submitAnswer === true) return;
 
-    // setState({
-    //   selected: state.selected,
-    //   value: eve.target[state.selected].value,
-    // });
-
     const answerObj = { authedUser, qid: question.id, answer: state.value };
-    dispatch(handleSaveQuestionAnswer(answerObj));
+    dispatch(
+      handleSaveQuestionAnswer(answerObj, () => {
+        setSubmitAnswer(true);
+      })
+    );
+  }
+
+  if (submitAnswer) {
+    return (
+      <>
+        <QuestionPoll
+          authedUser={authedUser}
+          question={question}
+          users={users}
+        />
+
+        <Link to="/">Back Home</Link>
+      </>
+    );
   }
 
   return (
@@ -48,27 +63,32 @@ function QuestionUnanswered({
       <img src={user.avatarURL} alt={user.name}></img>
       <h3>Would you rather....</h3>
 
-      <input
-        id="option-one"
-        type="radio"
-        value="optionOne"
-        checked={state.selected === "option-one"}
-        name="answer"
-        onChange={handleChange}
-      ></input>
-      <label>{question.optionOne.text}</label>
-      <input
-        id="option-two"
-        type="radio"
-        name="answer"
-        value="optionTwo"
-        checked={state.selected === "option-two"}
-        onChange={handleChange}
-      ></input>
-      <label>{question.optionTwo.text}</label>
+      <label>
+        <input
+          id="option-one"
+          type="radio"
+          value="optionOne"
+          checked={state.selected === "option-one"}
+          name="answer"
+          onChange={handleChange}
+        />
+        {question.optionOne.text}
+      </label>
+      <label>
+        <input
+          id="option-two"
+          type="radio"
+          name="answer"
+          value="optionTwo"
+          checked={state.selected === "option-two"}
+          onChange={handleChange}
+        />
+        {question.optionTwo.text}
+      </label>
+
       <button>Answer</button>
     </form>
   );
 }
 
-export default connect()(QuestionUnanswered);
+export default connect(({ users }) => ({ users }))(QuestionUnanswered);

@@ -1,8 +1,17 @@
 import React from "react";
+import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { setAuthedUser } from "../actions/authedUser";
 
-export default function Nav({ authedUser }) {
-  function handleLogOut() {}
+const Nav = ({ authedUser, userName, dispatch }) => {
+  function handleLogOut() {
+    dispatch(setAuthedUser(null));
+  }
+
+  if (!authedUser) {
+    return <div>Hello</div>;
+  }
+
   return (
     <nav
       className="nav"
@@ -20,9 +29,11 @@ export default function Nav({ authedUser }) {
         </li>
       </ul>
       <div>
-        <label></label>
+        <label>{userName}</label>
         <button onClick={handleLogOut}>Logout</button>
       </div>
     </nav>
   );
-}
+};
+
+export default connect()(Nav);
