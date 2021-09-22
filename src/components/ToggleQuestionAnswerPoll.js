@@ -3,8 +3,29 @@ import QuestionPoll from "./QuestionPoll";
 import QuestionUnanswered from "./QuestionUnanswered";
 
 function ToggleQuestionAnswerPoll({ location }) {
-  const unanswered = location.state.unanswered;
-  return <div>{unanswered ? <QuestionUnanswered /> : <QuestionPoll />}</div>;
+  const { unanswered, authedUser, question, questions, users, id } =
+    location.state;
+  return (
+    <div>
+      {unanswered ? (
+        <QuestionUnanswered
+          authedUser={authedUser}
+          question={question}
+          questions={questions}
+          users={users}
+          id={id}
+        />
+      ) : (
+        <QuestionPoll
+          authedUser={authedUser}
+          question={question}
+          questions={questions}
+          users={users}
+          id={id}
+        />
+      )}
+    </div>
+  );
 }
 
 export default ToggleQuestionAnswerPoll;

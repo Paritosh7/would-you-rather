@@ -1,7 +1,7 @@
 import React from "react";
 
-function QuestionPoll() {
-  return <div>Question Result</div>;
+function QuestionPoll({ authedUser, question, questions, users }) {
+  return <div></div>;
 }
 
 export default QuestionPoll;

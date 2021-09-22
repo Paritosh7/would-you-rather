@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link, withRouter } from "react-router-dom";
 
-function Question({ unanswered, id, users, questions, match }) {
+function Question({ authedUser, unanswered, id, users, questions, match }) {
   const questionObj = questions[id];
   const user = users[questionObj.author];
   const { name, avatarURL } = user;
@@ -15,14 +15,18 @@ function Question({ unanswered, id, users, questions, match }) {
       <h3>{questionObj.optionOne["text"]}</h3>
       <label>OR</label>
       <h3>{questionObj.optionTwo["text"]}</h3>
-      {/* {!unanswered && (
-        <label>{`You chose ${questionObj[user.answers[id]].text}`}</label>
-      )} */}
       {unanswered ? (
         <Link
           to={{
             pathname: `${match.url}question/${id}`,
-            state: { question: questionObj, unanswered },
+            state: {
+              question: questionObj,
+              unanswered,
+              authedUser,
+              id,
+              questions,
+              users,
+            },
           }}
         >
           You can answer here!
@@ -31,7 +35,14 @@ function Question({ unanswered, id, users, questions, match }) {
         <Link
           to={{
             pathname: `${match.url}question/${id}`,
-            state: { question: questionObj, unanswered },
+            state: {
+              question: questionObj,
+              unanswered,
+              authedUser,
+              id,
+              questions,
+              users,
+            },
           }}
         >
           View Poll
@@ -41,7 +52,8 @@ function Question({ unanswered, id, users, questions, match }) {
   );
 }
 
-const mapStateToProps = ({ users, questions }) => ({
+const mapStateToProps = ({ authedUser, users, questions }) => ({
+  authedUser,
   users,
   questions,
 });

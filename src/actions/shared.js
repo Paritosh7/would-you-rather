@@ -1,8 +1,15 @@
 import { _getQuestions as getQuestions, _getUsers as getUsers } from "../_DATA";
-import { _saveQuestion as saveQuestion } from "../_DATA";
+import {
+  _saveQuestion as saveQuestion,
+  _saveQuestionAnswer as saveQuestionAnswerAPI,
+} from "../_DATA";
 import { setAuthedUser } from "./authedUser";
-import { addQuestion, receiveQuestions } from "./questions";
-import { addQuestionToAuthedUser, receiveUsers } from "./users";
+import { addQuestion, receiveQuestions, saveQuestionAnswer } from "./questions";
+import {
+  addQuestionToAuthedUser,
+  receiveUsers,
+  saveQuestionAnswerToAuthedUser,
+} from "./users";
 
 export default function handleInitialUserData(id) {
   return (dispatch) => {
@@ -28,4 +35,11 @@ export const handleAddQuestion = (question) => (dispatch) => {
     const { id, author } = formattedQuestion;
     dispatch(addQuestionToAuthedUser(id, author));
   })();
+};
+
+export const handleSaveQuestionAnswer = (answerObj) => (dispatch) => {
+  saveQuestionAnswerAPI(answerObj).then(() => {
+    dispatch(saveQuestionAnswer(answerObj));
+    dispatch(saveQuestionAnswerToAuthedUser(answerObj));
+  });
 };
