@@ -1,0 +1,26 @@
+.nav {
+  display: flex;
+  background-color: "#4b6587";
+  padding: 0.5rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav > ul {
+  margin: 0;
+  padding: 0;
+  margin-left: 1rem;
+}
+
+.nav > ul > li + * {
+  margin-left: 0.7rem;
+}
+
+.nav-link-wrapper {
+  display: flex;
+}
+
+.nav-user {
+  display: flex;
+  align-items: center;
+}

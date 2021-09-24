@@ -1,0 +1,19 @@
+.login-form {
+  width: 50%;
+  height: 10rem;
+  margin: 4rem auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+select {
+  width: 90%;
+  padding: 0.4rem;
+}
+
+.login-submit {
+  width: 90%;
+  padding: 0.4rem;
+  margin: 0 auto;
+}

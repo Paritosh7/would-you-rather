@@ -1,4 +1,5 @@
 import React from "react";
+import "../css/question.css";
 import { connect } from "react-redux";
 import { Link, withRouter } from "react-router-dom";
 
@@ -8,9 +9,11 @@ function Question({ authedUser, unanswered, id, users, questions, match }) {
   const { name, avatarURL } = user;
 
   return (
-    <div>
-      <h2>{name}</h2>
-      <img src={avatarURL} alt={`${name}`}></img>
+    <div className="question">
+      <div className="avatar-div">
+        <img className="avatar" src={avatarURL} alt={`${name}`}></img>
+        <h2>{name}</h2>
+      </div>
       <label>Would you rather be...</label>
       <h3>{questionObj.optionOne["text"]}</h3>
       <label>OR</label>

@@ -19,4 +19,22 @@ html {
 body {
   margin: 0;
   padding: 0;
+  background-color: #f7f6f2;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  text-decoration: none;
+}
+
+button {
+  background-color: white;
+  border: navajowhite;
+  padding: 0.6rem;
+  width: 5rem;
 }

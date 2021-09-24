@@ -1,4 +1,5 @@
 import React from "react";
+import "../css/question-unanswered.css";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { handleSaveQuestionAnswer } from "../actions/shared";
@@ -33,7 +34,7 @@ function QuestionUnanswered({
 
   function handleSubmit(eve) {
     eve.preventDefault();
-    if (state.selected === null || submitAnswer === true) return;
+    if (state.selected === "none") return;
 
     const answerObj = { authedUser, qid: question.id, answer: state.value };
     dispatch(
@@ -52,15 +53,20 @@ function QuestionUnanswered({
           users={users}
         />
 
-        <Link to="/">Back Home</Link>
+        <Link style={{ display: "flex", justifyContent: "center" }} to="/">
+          Back Home
+        </Link>
       </>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>{user.name}</h2>
-      <img src={user.avatarURL} alt={user.name}></img>
+    <form className="question-unanswered" onSubmit={handleSubmit}>
+      <div className="avatar-div">
+        <img className="avatar" src={user.avatarURL} alt={user.name}></img>
+        <h2>{user.name}</h2>
+      </div>
+
       <h3>Would you rather....</h3>
 
       <label>

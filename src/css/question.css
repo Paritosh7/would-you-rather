@@ -1,0 +1,18 @@
+.question {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  align-items: center;
+  margin: 1rem auto;
+  padding: 1rem;
+  border: 1px solid #4b6587;
+}
+
+.avatar-div {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  width: 60px;
+}

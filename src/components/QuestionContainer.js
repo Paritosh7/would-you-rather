@@ -8,9 +8,6 @@ function QuestionsContainer({
   unAnsweredQuestionIds,
   answeredQuestionIds,
 }) {
-  console.log(unAnsweredQuestionIds);
-  console.log(answeredQuestionIds);
-
   function questionsList(questionIds) {
     return questionIds.map((id) => {
       return (

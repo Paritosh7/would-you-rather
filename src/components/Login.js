@@ -1,9 +1,9 @@
+import "../css/login.css";
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import handleInitialUserData from "../actions/shared";
 
 function Login({ authedUser, dispatch, history, location }) {
-  console.log("Login : ", authedUser);
   /**
    * Didn't want to make Login a controlled component,
    * so used useRef.
@@ -24,8 +24,8 @@ function Login({ authedUser, dispatch, history, location }) {
   }, [authedUser, history]);
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
+    <form class="login-form" onSubmit={handleSubmit}>
+      <label style={{ textAlign: "center" }}>
         Please select a loginName from the drop down:
         <select ref={userRef}>
           <option value="sarahedo">Sarah Edo</option>
@@ -33,7 +33,9 @@ function Login({ authedUser, dispatch, history, location }) {
           <option value="johndoe">John Doe</option>
         </select>
       </label>
-      <input type="submit" value="Submit" />
+      <button className="login-submit" type="submit" value="Submit">
+        Submit
+      </button>
     </form>
   );
 }

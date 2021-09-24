@@ -1,4 +1,5 @@
 import React from "react";
+import "../css/add-question.css";
 import { connect } from "react-redux";
 import { Redirect } from "react-router";
 import { handleAddQuestion } from "../actions/shared";
@@ -24,8 +25,8 @@ function AddQuestion({ authedUser, dispatch }) {
   if (redirectState) return <Redirect to="/" />;
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>Would you Rather</label>
+    <form className="form-add-question" onSubmit={handleSubmit}>
+      <h2>Would you Rather...</h2>
       <input id="option-one" placeholder="Option one"></input>
       <label>or</label>
       <input id="option-two" placeholder="Option two"></input>

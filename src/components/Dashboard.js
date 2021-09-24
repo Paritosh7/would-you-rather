@@ -9,9 +9,15 @@ function Dashboard() {
   const { unanswered } = state;
 
   return (
-    <div>
-      <button onClick={() => setState({ unanswered: true })}>unanswered</button>
-      <button onClick={() => setState({ unanswered: false })}>answered</button>
+    <div style={{ marginTop: "3rem" }}>
+      <div style={{ marginLeft: "1.5rem" }}>
+        <button onClick={() => setState({ unanswered: true })}>
+          unanswered
+        </button>
+        <button onClick={() => setState({ unanswered: false })}>
+          answered
+        </button>
+      </div>
       {unanswered ? (
         <QuestionsContainer unanswered={unanswered} />
       ) : (

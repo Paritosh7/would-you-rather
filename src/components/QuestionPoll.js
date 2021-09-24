@@ -1,4 +1,5 @@
 import React from "react";
+import "../css/question-poll.css";
 import { connect } from "react-redux";
 
 function QuestionPoll({ authedUser, question: oldQuestion, questions, users }) {
@@ -21,17 +22,18 @@ function QuestionPoll({ authedUser, question: oldQuestion, questions, users }) {
   ).toFixed(0);
 
   return (
-    <div>
-      <h2>{`${name} asked `}</h2>
-      <img src={avatarURL} alt={`${name}`}></img>
-      <h3>Would you rather...</h3>
-      <p>{question.optionOne.text}</p>
-      <span>{`Votes : ${optionOne.votes.length} out of ${totalVotes}`}</span>
-      <span>{`Percentage : ${optionOnePercentage} %`}</span>
-      <label>OR</label>
-      <p>{question.optionTwo.text}</p>
-      <span>{`Votes : ${optionTwo.votes.length} out of ${totalVotes}`}</span>
-      <span>{`Percentage : ${optionTwoPercentage} %`}</span>
+    <div className="question-poll">
+      <div className="avatar-div">
+        <img className="avatar" src={avatarURL} alt={`${name}`}></img>
+        <h2>{`${name} asked `}</h2>
+      </div>
+
+      <label>Would you rather...</label>
+      <h3>{question.optionOne.text}</h3>
+      <span>{`Votes : ${optionOne.votes.length} out of ${totalVotes} & Percentage : ${optionOnePercentage} %`}</span>
+      <label style={{ marginTop: "1rem" }}>OR</label>
+      <h3>{question.optionTwo.text}</h3>
+      <span>{`Votes : ${optionTwo.votes.length} out of ${totalVotes} & Percentage : ${optionTwoPercentage} %`}</span>
       <p>{`Your Answer:  ${userAnswer}`}</p>
     </div>
   );
