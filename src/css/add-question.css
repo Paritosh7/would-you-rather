@@ -8,11 +8,15 @@
   padding: 1rem;
   border: 1px solid #4b6587;
   height: 20rem;
+  border-radius: 0.4rem;
+  background: #c8c6c6;
 }
 
 .form-add-question > input {
   padding: 0.6rem;
   width: 100%;
+  border: none;
+  border-radius: 0.2rem;
 }
 
 .form-add-question > button {

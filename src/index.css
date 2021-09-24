@@ -32,9 +32,23 @@ li {
   text-decoration: none;
 }
 
+a {
+  text-decoration: none;
+}
+
 button {
   background-color: white;
   border: navajowhite;
   padding: 0.6rem;
   width: 5rem;
+  border-radius: 0.2rem;
+}
+
+.active {
+  background-color: #4b6587;
+  color: white;
+}
+
+.selected {
+  color: white;
 }

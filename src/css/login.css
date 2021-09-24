@@ -5,6 +5,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  border-radius: 0.4rem;
+  background: #c8c6c6;
 }
 
 select {

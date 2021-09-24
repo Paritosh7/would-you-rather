@@ -1,20 +1,39 @@
 import React from "react";
-import { connect } from "react-redux";
-import Nav from "./Nav";
 import QuestionsContainer from "./QuestionContainer";
-import AddQuestion from "./AddQuestion";
 
 function Dashboard() {
-  const [state, setState] = React.useState(() => ({ unanswered: true }));
+  const [state, setState] = React.useState(() => ({
+    unanswered: true,
+    button: { unAnsweredBtn: "active", answeredBtn: "" },
+  }));
   const { unanswered } = state;
+  const { unAnsweredBtn: unAnsweredStyle, answeredBtn: answeredStyle } =
+    state.button;
 
   return (
     <div style={{ marginTop: "3rem" }}>
       <div style={{ marginLeft: "1.5rem" }}>
-        <button onClick={() => setState({ unanswered: true })}>
+        <button
+          className={unAnsweredStyle}
+          onClick={(eve) =>
+            setState({
+              unanswered: true,
+              button: { unAnsweredBtn: "active", answeredBtn: "" },
+            })
+          }
+        >
           unanswered
         </button>
-        <button onClick={() => setState({ unanswered: false })}>
+        <button
+          className={answeredStyle}
+          style={{ marginLeft: "1rem" }}
+          onClick={() =>
+            setState({
+              unanswered: false,
+              button: { unAnsweredBtn: "", answeredBtn: "active" },
+            })
+          }
+        >
           answered
         </button>
       </div>

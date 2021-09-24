@@ -19,13 +19,19 @@ const Nav = ({ authedUser, userName, dispatch, history }) => {
     <nav className="nav">
       <ul className="nav-link-wrapper">
         <li>
-          <NavLink to="/">Home</NavLink>
+          <NavLink activeClassName="selected" to="/" exact>
+            Home
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/leaderboard">Leaderboard</NavLink>
+          <NavLink activeClassName="selected" to="/leaderboard">
+            Leaderboard
+          </NavLink>
         </li>
         <li>
-          <NavLink to={{ pathname: "/add" }}>Add Question</NavLink>
+          <NavLink activeClassName="selected" to={{ pathname: "/add" }}>
+            Add Question
+          </NavLink>
         </li>
       </ul>
       <div className="nav-user">

@@ -3,5 +3,14 @@ export function calcUnAnsweredQuestionIds(user, questions) {
   const unansweredQuesIds = questionIdsArr.filter(
     (id) => !user.answers.hasOwnProperty(id)
   );
-  return unansweredQuesIds;
+  return sortByTimestamp(questions, unansweredQuesIds);
+}
+
+export function sortByTimestamp(questions, questionIds) {
+  return questionIds.sort((a, b) => {
+    return (
+      new Date(questions[b].timestamp).getTime() -
+      new Date(questions[a].timestamp).getTime()
+    );
+  });
 }

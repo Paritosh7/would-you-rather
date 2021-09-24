@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import Question from "./Question";
-import { calcUnAnsweredQuestionIds } from "../utils/helper";
+import { calcUnAnsweredQuestionIds, sortByTimestamp } from "../utils/helper";
 
 function QuestionsContainer({
   unanswered,
@@ -33,8 +33,11 @@ const mapStateToProps = ({ authedUser, users, questions }) => {
       users[authedUser],
       questions
     ),
-    answeredQuestionIds: Object.keys(users[authedUser].answers),
-    questions,
+    answeredQuestionIds: sortByTimestamp(
+      questions,
+      Object.keys(users[authedUser].answers),
+      questions
+    ),
   };
 };
 

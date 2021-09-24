@@ -8,13 +8,19 @@ import AddQuestion from "./AddQuestion";
 import LeaderBoard from "./Leaderboard";
 import Nav from "./Nav";
 import ToggleQuestionAnswerPoll from "./ToggleQuestionAnswerPoll";
-import NoMatch from "./NoMatch";
+import PageNotFound from "./PageNotFound";
 
 function App({ authedUser, userName }) {
   return (
     <Router>
       <Nav authedUser={authedUser} userName={userName}></Nav>
       <Switch>
+        <PrivateRoute
+          path="/"
+          authedUser={authedUser}
+          exact
+          component={Dashboard}
+        />
         <Route exact path="/login" component={Login}></Route>
         <PrivateRoute
           path="/leaderboard"
@@ -35,13 +41,7 @@ function App({ authedUser, userName }) {
           authedUser={authedUser}
           component={ToggleQuestionAnswerPoll}
         />
-        <PrivateRoute
-          path="/"
-          authedUser={authedUser}
-          exact
-          component={Dashboard}
-        />
-        <Route component={NoMatch}></Route>
+        <Route component={PageNotFound}></Route>
       </Switch>
     </Router>
   );

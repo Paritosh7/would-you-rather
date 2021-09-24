@@ -6,6 +6,8 @@
   margin: 1rem auto;
   padding: 1rem;
   border: 1px solid #4b6587;
+  border-radius: 0.4rem;
+  background: #c8c6c6;
 }
 
 .avatar-div {
