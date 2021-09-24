@@ -15,7 +15,7 @@ function LeaderBoard({ users }) {
             <th>Created Questions</th>
           </tr>
           {users.map((user) => (
-            <tr>
+            <tr key={user.id}>
               <td>{user.score}</td>
               <td>{user.name}</td>
               <td>{Object.keys(user.answers).length}</td>

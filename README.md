@@ -1,69 +1,46 @@
 # Would You Rather Project
 
-This is the starter code for the final assessment project for Udacity's React & Redux course.
+This project was part of Udacity's Nano degree program.
 
-The `_DATA.js` file represents a fake database and methods that let you access the data. The only thing you need to edit in the ` _DATA.js` file is the value of `avatarURL`. Each user should have an avatar, so you’ll need to add the path to each user’s avatar.
+> This is a simple " Would you rather ?" game. The user is asked a simple question with two choices but can choose only one option. In addition, the user also has the ability to post questions, look at the current leaderboard. Keep track of number of questions he/she answered and more.
 
-Using the provided starter code, you'll build a React/Redux front end for the application. We recommend using the [Create React App](https://github.com/facebook/create-react-app) to bootstrap the project.
+# Tech Stack
+
+1. HTML
+2. CSS
+3. JS (ES5, ES6)
+4. ReactJS
+5. Redux
+6. React Router
 
 ## Data
 
-There are two types of objects stored in our database:
+The starter code will consist of a \_DATA.js file, which represents a fake database and contains methods that let you access the data.
 
-- Users
-- Questions
+The code will talk to the database via 4 methods:
 
-### Users
+- [`_getUsers()`](#_getUsers)
+- [`_getQuestions()`](#_getQuestions)
+- [`_saveQuestion(question)`](#_saveQuestion)
+- [`_saveQuestionAnswer(object)`](#_saveQuestionAnswer)
 
-Users include:
-
-| Attribute | Type   | Description                                                                                                                                                                                                    |
-| --------- | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| id        | String | The user’s unique identifier                                                                                                                                                                                   |
-| name      | String | The user’s first name and last name                                                                                                                                                                            |
-| avatarURL | String | The path to the image file                                                                                                                                                                                     |
-| questions | Array  | A list of ids of the polling questions this user created                                                                                                                                                       |
-| answers   | Object | The object's keys are the ids of each question this user answered. The value of each key is the answer the user selected. It can be either `'optionOne'` or `'optionTwo'` since each question has two options. |
-
-### Questions
-
-Questions include:
-
-| Attribute | Type   | Description                            |
-| --------- | ------ | -------------------------------------- |
-| id        | String | The question’s unique identifier       |
-| author    | String | The author’s unique identifier         |
-| timestamp | String | The time when the question was created |
-| optionOne | Object | The first voting option                |
-| optionTwo | Object | The second voting option               |
-
-### Voting Options
-
-Voting options are attached to questions. They include:
-
-| Attribute | Type   | Description                                                        |
-| --------- | ------ | ------------------------------------------------------------------ |
-| votes     | Array  | A list that contains the id of each user who voted for that option |
-| text      | String | The text of the option                                             |
-
-Your code will talk to the database via 4 methods:
-
-- `_getUsers()`
-- `_getQuestions()`
-- `_saveQuestion(question)`
-- `_saveQuestionAnswer(object)`
-
-1. `_getUsers()` Method
+```js
+_getUsers();
+```
 
 _Description_: Get all of the existing users from the database.  
 _Return Value_: Object where the key is the user’s id and the value is the user object.
 
-2. `_getQuestions()` Method
+```js
+_getQuestions();
+```
 
 _Description_: Get all of the existing questions from the database.  
 _Return Value_: Object where the key is the question’s id and the value is the question object.
 
-3. `_saveQuestion(question)` Method
+```js
+_saveQuestion(question);
+```
 
 _Description_: Save the polling question in the database.  
 _Parameters_: Object that includes the following properties: `author`, `optionOneText`, and `optionTwoText`. More details about these properties:
@@ -95,6 +72,18 @@ _Parameters_: Object that contains the following properties: `authedUser`, `qid`
 | qid        | String | The id of the question that was answered                                                |
 | answer     | String | The option the user selected. The value should be either `"optionOne"` or `"optionTwo"` |
 
-## Contributing
+## Installation
 
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests. For details, check out [CONTRIBUTING.md](https://github.com/udacity/reactnd-project-would-you-rather-starter/blob/master/CONTRIBUTING.md).
+First clone the project. Then in the root directory of your project open terminal, run
+
+```bash
+yarn install
+```
+
+After all the relevant dependencies are added, you need to run a server (local machine). In the terminal, run
+
+```bash
+yarn start
+```
+
+You are all set! Keep coding!

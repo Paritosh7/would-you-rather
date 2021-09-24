@@ -4,30 +4,37 @@ import { connect } from "react-redux";
 import handleInitialUserData from "../actions/shared";
 
 function Login({ authedUser, dispatch, history, location }) {
-  /**
-   * Didn't want to make Login a controlled component,
-   * so used useRef.
-   */
-  const userRef = React.useRef();
+  const [userState, setUserState] = React.useState(() => "");
+
+  function handleChange(eve) {
+    setUserState(eve.target.value);
+  }
 
   function handleSubmit(eve) {
+    if (!userState) return;
     eve.preventDefault();
-    const userID = userRef.current.value;
-    dispatch(handleInitialUserData(userID));
+    dispatch(handleInitialUserData(userState));
   }
 
   useEffect(() => {
     if (authedUser) {
       const { from } = location.state || { from: "/" };
+      console.log(from);
       history.push(from);
     }
-  }, [authedUser, history, location.state]);
+  }, [authedUser]);
 
   return (
     <form className="login-form" onSubmit={handleSubmit}>
       <label style={{ textAlign: "center" }}>
         Please select a loginName from the drop down:
-        <select ref={userRef}>
+        <select
+          value={userState === "" ? "" : userState}
+          onChange={handleChange}
+        >
+          <option default disabled defaultValue value="">
+            Please select a name
+          </option>
           <option value="sarahedo">Sarah Edo</option>
           <option value="tylermcginnis">Tyler McGinnis</option>
           <option value="johndoe">John Doe</option>

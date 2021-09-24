@@ -21,7 +21,7 @@ function Question({ authedUser, unanswered, id, users, questions, match }) {
       {unanswered ? (
         <Link
           to={{
-            pathname: `${match.url}question/${id}`,
+            pathname: `${match.url}questions/${id}`,
             state: {
               question: questionObj,
               unanswered,
@@ -36,7 +36,7 @@ function Question({ authedUser, unanswered, id, users, questions, match }) {
       ) : (
         <Link
           to={{
-            pathname: `${match.url}question/${id}`,
+            pathname: `${match.url}questions/${id}`,
             state: {
               question: questionObj,
               unanswered,
