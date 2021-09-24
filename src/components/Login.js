@@ -21,10 +21,10 @@ function Login({ authedUser, dispatch, history, location }) {
       const { from } = location.state || { from: "/" };
       history.push(from);
     }
-  }, [authedUser, history]);
+  }, [authedUser, history, location.state]);
 
   return (
-    <form class="login-form" onSubmit={handleSubmit}>
+    <form className="login-form" onSubmit={handleSubmit}>
       <label style={{ textAlign: "center" }}>
         Please select a loginName from the drop down:
         <select ref={userRef}>
