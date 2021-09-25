@@ -15,13 +15,13 @@ function App({ authedUser, userName }) {
     <Router>
       <Nav authedUser={authedUser} userName={userName}></Nav>
       <Switch>
-        <Route exact path="/login" component={Login}></Route>
         <PrivateRoute
           path="/"
           authedUser={authedUser}
           exact
           component={Dashboard}
         />
+        <Route exact path="/login" component={Login}></Route>
         <PrivateRoute
           path="/leaderboard"
           exact
@@ -41,6 +41,8 @@ function App({ authedUser, userName }) {
           authedUser={authedUser}
           component={ToggleQuestionAnswerPoll}
         />
+        <Route path="/404" component={PageNotFound} />
+        <Route component={PageNotFound} />
       </Switch>
     </Router>
   );

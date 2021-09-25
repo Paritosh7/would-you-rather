@@ -5,6 +5,7 @@ import handleInitialUserData from "../actions/shared";
 
 function Login({ authedUser, dispatch, history, location }) {
   const [userState, setUserState] = React.useState(() => "");
+  console.log(history);
 
   function handleChange(eve) {
     setUserState(eve.target.value);

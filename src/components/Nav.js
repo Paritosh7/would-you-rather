@@ -8,7 +8,7 @@ import LoginHeader from "./LoginHeader";
 const Nav = ({ authedUser, userName, dispatch, history }) => {
   function handleLogOut() {
     dispatch(setAuthedUser(null));
-    history.push("/");
+    // history.push("/");
   }
 
   if (!authedUser) {
