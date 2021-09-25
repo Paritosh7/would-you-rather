@@ -1,7 +1,7 @@
 import React from "react";
 import "../css/question-unanswered.css";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { handleSaveQuestionAnswer } from "../actions/shared";
 import QuestionPoll from "./QuestionPoll";
 
@@ -26,6 +26,8 @@ function QuestionUnanswered({
 
   const [submitAnswer, setSubmitAnswer] = React.useState(() => false);
 
+  if (!questions[question.id]) return <Redirect to="/404" />;
+
   function handleChange(eve) {
     if (state.selected === "none") {
       setState({ selected: eve.target.id, value: eve.target.value });
@@ -35,7 +37,6 @@ function QuestionUnanswered({
   function handleSubmit(eve) {
     eve.preventDefault();
     if (state.selected === "none") return;
-
     const answerObj = { authedUser, qid: question.id, answer: state.value };
     dispatch(
       handleSaveQuestionAnswer(answerObj, () => {

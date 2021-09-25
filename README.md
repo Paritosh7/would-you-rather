@@ -2,7 +2,7 @@
 
 This project was part of Udacity's Nano degree program.
 
-> This is a simple " Would you rather ?" game. The user is asked a simple question with two choices but can choose only one option. In addition, the user also has the ability to post questions, look at the current leaderboard. Keep track of number of questions he/she answered and more.
+> This is a simple " Would you rather ?" game. The user is asked a simple question with two choices but can choose only one option. In addition, the user has the ability to post questions, look at the current leaderboard. Keep track of number of questions he/she answered and more.
 
 # Tech Stack
 
@@ -15,7 +15,7 @@ This project was part of Udacity's Nano degree program.
 
 ## Data
 
-The starter code will consist of a \_DATA.js file, which represents a fake database and contains methods that let you access the data.
+The starter code will consist of a \_DATA.js file, which represents a fake database and contain methods that let you access the data.
 
 The code will talk to the database via 4 methods:
 

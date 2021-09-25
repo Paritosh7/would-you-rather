@@ -6,7 +6,6 @@ const PrivateRoute = ({ authedUser, component: Component, ...rest }) => {
     <Route
       {...rest}
       render={(props) => {
-        console.log(props);
         return authedUser ? (
           <Component {...props} />
         ) : (

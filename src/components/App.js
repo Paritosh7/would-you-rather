@@ -41,7 +41,7 @@ function App({ authedUser, userName }) {
           authedUser={authedUser}
           component={ToggleQuestionAnswerPoll}
         />
-        <Route path="/404" component={PageNotFound} />
+        <Route exact path="/404" component={PageNotFound} />
         <Route component={PageNotFound} />
       </Switch>
     </Router>

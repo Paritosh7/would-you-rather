@@ -1,9 +1,13 @@
 import React from "react";
 import "../css/question-poll.css";
 import { connect } from "react-redux";
+import { Redirect } from "react-router";
 
 function QuestionPoll({ authedUser, question: oldQuestion, questions, users }) {
   const question = questions[oldQuestion.id];
+
+  if (!questions[question.id]) return <Redirect to="/404" />;
+
   const user = users[question.author];
   const { name, avatarURL } = user;
   const { optionOne, optionTwo } = question;

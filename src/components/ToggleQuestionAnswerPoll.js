@@ -1,15 +1,15 @@
 import React from "react";
+import { connect } from "react-redux";
 import { Redirect } from "react-router";
 import QuestionPoll from "./QuestionPoll";
 import QuestionUnanswered from "./QuestionUnanswered";
 
-function ToggleQuestionAnswerPoll({ location }) {
+function ToggleQuestionAnswerPoll({ location, questions }) {
   if (!location.state) {
     return <Redirect to="/404"></Redirect>;
   }
 
-  const { unanswered, authedUser, question, questions, users, id } =
-    location.state;
+  const { unanswered, authedUser, question, users, id } = location.state;
   return (
     <div>
       {unanswered ? (
@@ -30,5 +30,6 @@ function ToggleQuestionAnswerPoll({ location }) {
     </div>
   );
 }
-
-export default ToggleQuestionAnswerPoll;
+export default connect(({ questions }) => ({ questions }))(
+  ToggleQuestionAnswerPoll
+);
